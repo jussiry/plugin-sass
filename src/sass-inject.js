@@ -31,8 +31,11 @@ async function sassImporter(request, done) {
     // Currently only supporting scss imports due to
     // https://github.com/sass/libsass/issues/1695
     resolved = await resolvePath(request);
-    const partialPath = resolved.replace(/\/([^/]*)$/, '/_$1');
-    const resp = await reqwest(partialPath);
+
+    // Partial loading removed; causes errors with JSPM 0.17
+    // const partialPath = resolved.replace(/\/([^/]*)$/, '/_$1');
+    // const resp = await reqwest(partialPath);
+
     // In Cordova Apps the response is the raw XMLHttpRequest
     content = resp.responseText ? resp.responseText : resp;
   } catch (e) {
