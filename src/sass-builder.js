@@ -92,7 +92,7 @@ export default async function sassBuilder(loads, compileOpts) {
     }
     if (!isUndefined(System.sassPluginOptions) &&
         System.sassPluginOptions.autoprefixer) {
-      const { css } = await postcss([autoprefixer]).process(text);
+      const { css } = await postcss([autoprefixer]).process(text || '');
       return css;
     }
     return text;

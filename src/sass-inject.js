@@ -88,7 +88,7 @@ async function compile(scss, styleUrl) {
   }
   if (!isUndefined(System.sassPluginOptions) &&
       System.sassPluginOptions.autoprefixer) {
-    const { css } = await postcss([autoprefixer]).process(text);
+    const { css } = await postcss([autoprefixer]).process(text || '');
     inject(css);
   } else {
     inject(text);
