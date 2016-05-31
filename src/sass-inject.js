@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer';
 import isEmpty from 'lodash/isEmpty';
 import isString from 'lodash/isString';
 import isUndefined from 'lodash/isUndefined';
+import cloneDeep from 'lodash/cloneDeep';
 import path from 'path';
 import postcss from 'postcss';
 import reqwest from 'reqwest';
@@ -106,7 +107,7 @@ export default async function sassInject(load) {
   let options = {};
   if (!isUndefined(System.sassPluginOptions) &&
       !isUndefined(System.sassPluginOptions.sassOptions)) {
-    options = System.sassPluginOptions.sassOptions;
+    options = cloneDeep(System.sassPluginOptions.sassOptions);
   }
   options.indentedSyntax = indentedSyntax;
   options.importer = { urlBase };
