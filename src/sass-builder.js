@@ -54,9 +54,9 @@ sass.importer(async (request, done) => {
   let readPartialPath;
   try {
     resolved = await resolvePath(request);
-    const partialUrl = resolved.replace(/\/([^/]*)$/, '/_$1');
+    // const partialUrl = resolved.replace(/\/([^/]*)$/, '/_$1');
     readImportPath = fromFileURL(resolved);
-    readPartialPath = fromFileURL(partialUrl);
+    // readPartialPath = fromFileURL(partialUrl);
     content = await loadFile(readPartialPath);
   } catch (e) {
     try {
